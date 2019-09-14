@@ -1,0 +1,197 @@
+//Exercise 1
+Write a program that reads two strings for playing the game of Rock-Paper-Scissors. If
+the strings entered by the user are not Rock,Paper or Scissors, the program keeps
+on prompting the user to enter new values. If valid strings are inserted, repeat the loop,
+until one of the sides wins. (You can use alert instead of console.log).
+
+function game(){
+    
+    let choice1=prompt('Rock,Paper or Scissors: choice1 ');
+    while(choice1!=='Rock'&&choice1!=='Paper'&&choice1!=='Scissors'){
+        choice1=prompt('Invalid input, enter correct value: choice1 ');
+    }
+    let choice2=prompt('Rock,Paper or Scissors: choice2 ');
+    while(choice2!=='Rock'&&choice2!=='Paper'&&choice2!=='Scissors'){
+        
+        choice2=prompt('Invalid input, enter correct value: choice2 ');
+    }
+
+
+  while(choice1===choice2)
+    {
+        alert("Draw! Enter new values.");
+        choice1=prompt('Rock,Paper or Scissors: choice1 ');
+        while(choice1!=='Rock'&&choice1!=='Paper'&&choice1!=='Scissors'){
+
+            choice1=prompt('Invalid input, enter correct value: choice1 ');
+        }
+        choice2=prompt('Rock,Paper or Scissors: choice2 ');
+        while(choice2!=='Rock'&&choice2!=='Paper'&&choice2!=='Scissors'){
+        
+            choice2=prompt('Invalid input, enter correct value: choice2 ');
+        }
+    }
+    
+
+     if(choice1==='Rock'){
+         if(choice2==='Paper'){
+             alert('2nd player wins!');
+         }
+         else
+         {
+             alert('1nd player wins!');
+         }
+     }
+     else
+     if(choice1==='Scissors'){
+         if(choice2==='Rock'){
+             alert('2nd player wins!');
+         }
+         else{
+            alert('1nd player wins!');
+     }
+    }
+    else 
+    if(choice1==='Paper'){
+        if(choice2==='Rock'){
+            alert('1nd player wins!');
+        }
+        else
+        {
+            alert('2nd player wins!');
+        }
+    }
+
+}
+
+game();
+
+
+//Exercise 2
+Given an array of a size smaller than 100. It consists of numbers from 0 to 99 in any
+order. Create a new array where each element from that array is placed under the index
+of its value. Start from the smallest value and end with the biggest one. If there are
+missing values, put in its places undefined.
+
+
+function newArr(arr){
+    if(arr.length===0||arr.length>=100){
+        console.log('Sorry, cannot calculate.');
+        return;
+    }
+
+    let myArray=[];
+    arr.sort(function(a,b){return a-b;});
+    let length=arr.length;
+
+    for(let i=0; i<length; i++){
+        if(arr[i]<0||arr[i]>99){
+            console.log('Sorry,but array`s elements are limited.');
+            return;
+        }
+        
+           if(!myArray.includes(arr[i])&&arr[i+1]-arr[i]===1){
+               myArray.push(arr[i]);
+            
+           }
+           else
+           if(arr[i]===arr[i+1]){
+               continue;
+           }
+           
+        
+           else{
+                myArray.push(arr[i]);
+                let k=arr[i+1]-arr[i]-1;
+                while(k){
+                myArray.push(undefined);
+                k--;
+            }
+            
+           }
+    }
+    
+       console.log(myArray);
+    
+
+}
+
+newArr([9,11,4,0,2,2]);
+newArr([106,4]);
+
+//Exercise 3
+Write a function isEmpty(obj){} which returns true if the object is empty and false
+otherwise.
+
+function isEmpty(obj){
+    for(let key in obj){
+        console.log('false');
+        return;
+    }
+    console.log('true');
+}
+isEmpty({});
+
+
+//Exercise 4
+Write a function sumAllAges(obj){} which calculates the sum of all ages.
+
+function sumAllAges(obj){
+    let sum=0;
+    for(let key in obj){
+        if(typeof obj[key]==='number'){
+        sum+=obj[key];
+        }
+    }
+    console.log(sum);
+}
+sumAllAges({Aram: 16,Ani: 20,Vardan:true});
+
+
+//Exercise 5
+Write a function multiplyNumeric(obj){} which multiplies all numeric properties of obj
+by 2 (modifiing the obj in place).
+
+
+function multiplyNumeric(obj){
+    for(let key in obj){
+        if(typeof obj[key]==='number'&&!isNaN(obj[key])&&isFinite(obj[key])){
+            obj[key]*=2;
+        }
+    }
+    console.log(obj);
+}
+multiplyNumeric({age: 20,name:'Ani',salary: 500});
+
+
+//Exercise 6
+Write a function findMinForArray(arr){} which returns the minimum value from which
+starting calculation af all elements from arr becomes >= 1.
+
+function findMinForArray(arr){
+    if(arr.length===0){
+        console.log(1);
+        return;
+    }
+    let sum=0;
+    for(let i=0; i<arr.length; i++){
+        sum+=arr[i];
+    }
+    
+    console.log(1-sum);
+}
+findMinForArray([-13,5,2,1,-4]);
+findMinForArray([-2, 3, 4, 8, -12]);
+findMinForArray([1,2,3]);
+findMinForArray([]);
+
+
+
+
+
+
+
+
+
+
+         
