@@ -125,12 +125,13 @@ otherwise.
 
 function isEmpty(obj){
     for(let key in obj){
-        console.log('false');
-        return;
+        
+        return false;
     }
-    console.log('true');
+    return true;
 }
-isEmpty({});
+let emptyOrNot=isEmpty({});
+console.log(emptyOrNot);
 
 
 //Exercise 4
