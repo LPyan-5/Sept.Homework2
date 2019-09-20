@@ -79,14 +79,30 @@ function newArr(arr){
         console.log('Sorry, cannot calculate.');
         return;
     }
-
+    
     let myArray=[];
     arr.sort(function(a,b){return a-b;});
     let length=arr.length;
-
-    for(let i=0; i<length; i++){
+    let t=0;
+    if(arr[0]){
+        myArray.push(arr[0]);
+                
+                do{ 
+                    t++;
+                }
+                while(arr[0]===arr[t])
+                let k=arr[t]-arr[0]+1;
+                while(k){
+                myArray.push(undefined);
+                k--;
+                }
+    
+    
+    }   
+    
+    for(i=t; i<length; i++){
         if(arr[i]<0||arr[i]>99){
-            console.log('Sorry,but array`s elements are limited.');
+            console.log('Invalid array element.');
             return;
         }
         
@@ -94,19 +110,21 @@ function newArr(arr){
                myArray.push(arr[i]);
             
            }
+           
            else
            if(arr[i]===arr[i+1]){
                continue;
            }
            
-        
-           else{
+           
+           else
+                {
                 myArray.push(arr[i]);
                 let k=arr[i+1]-arr[i]-1;
                 while(k){
                 myArray.push(undefined);
                 k--;
-            }
+                }
             
            }
     }
@@ -116,8 +134,10 @@ function newArr(arr){
 
 }
 
-newArr([9,11,4,0,2,2]);
-newArr([106,4]);
+newArr([9,11,4,0,0,2,2]);
+newArr([10,4,0]);
+newArr([9,11,11,2,4,8,2,2,5]);
+newArr([9,11,4,8,2,5]);
 
 //Exercise 3
 Write a function isEmpty(obj){} which returns true if the object is empty and false
